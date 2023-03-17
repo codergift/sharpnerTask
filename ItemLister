@@ -30,6 +30,15 @@
     </ul>
    </div>
   </div>
+  
+  <script>
+    var headerTitle =document.getElementById('header-title');
+    headerTitle.style.borderBottom='solid 3px #000';
+
+    var items =document.getElementsByClassName('list-group-item');
+    items[1].style.fontWeight='bold';
+    items[1].style.backgroundColor='green';
+  </script>
 
 </body>
 </html>
