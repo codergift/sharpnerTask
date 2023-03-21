@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>JS For Beginners</title>
+    <link rel="stylesheet" href="appointment.css">
+  </head>
+  <body>
+
+    <section class="container">
+      <header>
+        <h1 style="text-align: center; color: tomato;">Book a call</h1>
+        <h5 style="text-align: center">Book a call slot and our representative will call you</h5>
+      </header>
+      <hr width="100%" size="4px">
+      <form onsubmit="saveToLocalStorage(event)" id="my-form" >
+
+        <div>
+          <label for="name">Name:</label>
+          <input type="text" id="name" placeholder="Enter your name" required>
+        </div>
+
+        <div>
+          <label for="email">Email:</label>
+          <input type="text" id="email" placeholder="Enter your email" required>
+        </div>
+        
+        <div>
+          <label for="phone"> Phone:</label>
+          <input  type="text" id="phone" placeholder="Enter phone number"required>
+        </div>
+        <div>Time for call:<br><input type="date"> <input type="time"></div>
+
+        <input style="background-color: tomato;" class="btn" type="submit" value="Get a call">
+
+
+
+      </form>
+
+    </section>
+    
+
+    <script>
+      function saveToLocalStorage(event){
+          event.preventDefault();
+          const name= event.target.name;
+          const email= event.target.email;
+          const phone= event.target.phone;
+
+          localStorage.setItem('name', name);
+          localStorage.setItem('email', email);
+          localStorage.setItem('phone', phone);
+      }
+    </script>
+  </body>
+</html>
