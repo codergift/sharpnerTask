@@ -61,6 +61,19 @@
       
             console.log('User details saved:', userDetails);
         }
+        const userDetails = JSON.parse(localStorage.getItem('userDetails'));
+        if(userDetails){
+          const container = document.querySelector('.container');
+          const detailsDiv = document.createElement('div');
+          detailsDiv.innerHTML = `
+            <h2>Your Details:</h2>
+            <p>Name: ${userDetails.name}</p>
+            <p>Email: ${userDetails.email}</p>
+            <p>Phone: ${userDetails.phone}</p>
+            <p>Time: ${userDetails.time}</p>
+          `;
+          container.appendChild(detailsDiv);
+        }
       </script>
       
   </body>
