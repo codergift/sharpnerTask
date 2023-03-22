@@ -26,7 +26,7 @@
           <label for="email">Email:</label>
           <input type="text" name="email" id="email" placeholder="Enter your email" required>
         </div>
-        
+
         <div>
           <label for="phone"> Phone:</label>
           <input  type="text" name="phone" id="phone" placeholder="Enter phone number"required>
@@ -40,7 +40,7 @@
       </form>
 
     </section>
-    
+
 
     <script>
         function saveToLocalStorage(event){
@@ -50,7 +50,7 @@
             const phone= event.target.phone.value;
             const time= event.target.time.value;
             const date= event.target.date.value;
-      
+
             const userDetails = {
               name: name,
               email: email,
@@ -58,13 +58,13 @@
               time: time,
               date:date
             };
-      
+
             localStorage.setItem('userDetails', JSON.stringify(userDetails));
-      
+
             console.log('User details saved:', userDetails);
         }
         const userDetails = JSON.parse(localStorage.getItem('userDetails'));
-        
+
         if (userDetails) {
           const container = document.querySelector('.container');
           const detailsDiv = document.createElement('div');
@@ -75,6 +75,7 @@
             <p>Date: ${userDetails.date}</p>
             <p>Time: ${userDetails.time}</p>
             <button class="delete-btn">Delete</button>
+            <button class="edit-btn">Edit</button>
           `;
           container.appendChild(detailsDiv);
         }
@@ -87,8 +88,24 @@
           });
         });
 
+        const editBtns = document.querySelectorAll('.edit-btn');
+        editBtns.forEach(editBtn => {
+          editBtn.addEventListener('click', event => {
+            event.preventDefault();
+            const userDetails = JSON.parse(localStorage.getItem('userDetails'));
+            const form = document.querySelector('#my-form');
+            form.name.value = userDetails.name;
+            form.email.value = userDetails.email;
+            form.phone.value = userDetails.phone;
+            form.date.value = userDetails.date;
+            form.time.value = userDetails.time;
+            localStorage.removeItem('userDetails');
+            event.target.parentNode.remove();
+          });
+        });
+
 
       </script>
-      
+
   </body>
 </html>
